@@ -4,8 +4,8 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
   <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='12' fill='%23f5f3ea'/%3E%3Ctext x='32' y='42' text-anchor='middle' font-family='Georgia' font-size='31' fill='%23273225'%3EA%26N%3C/text%3E%3C/svg%3E" />
-  <meta name="description" content="Andy and Nicoletta are getting married August 21, 2027 at The Morrison Residence, Lake George." />
-  <title>Andy & Nicoletta · August 21, 2027</title>
+  <meta name="description" content="Nicoletta and Andy are getting married August 21, 2027 at The Morrison Residence, Lake George." />
+  <title>Nicoletta & Andy · August 21, 2027</title>
   <style>
     :root {
       --bg: #f5f3ea;
@@ -100,21 +100,24 @@
     .content { max-width: 700px; }
     .content p { margin: 0 0 22px; font-size: 17px; }
     .detail-list { display: grid; gap: 22px; }
-    .hotel-list { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 0 24px; margin-top: 30px; }
-    .hotel {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: 18px;
-      min-height: 72px;
-      border-top: 1px solid var(--line);
-      font-family: Georgia, "Times New Roman", serif;
-      font-size: 19px;
-      line-height: 1.25;
-    }
-    .hotel:hover { color: var(--accent); }
-    .hotel::after { content: "↗"; flex: none; font-family: ui-sans-serif, sans-serif; font-size: 17px; color: var(--accent); }
-    .hotel-note { margin-top: 14px; color: var(--muted); font-size: 14px; }
+    .hotel-list { margin-top: 30px; border-top: 1px solid var(--line); }
+    .hotel-card { border-bottom: 1px solid var(--line); padding: 0; }
+    .hotel-card:first-child { border-top: 0; }
+    .hotel-card summary { align-items: center; padding: 21px 0; }
+    .hotel-card summary:hover { color: var(--accent); }
+    .hotel-card summary::after { content: "+"; font-size: 24px; line-height: 1; color: var(--accent); }
+    .hotel-card[open] summary::after { content: "−"; }
+    .hotel-name { font-family: Georgia, "Times New Roman", serif; font-size: 21px; line-height: 1.2; }
+    .hotel-place { display: block; margin-top: 5px; font-size: 13px; color: var(--muted); }
+    .hotel-body { padding: 0 0 26px; }
+    .hotel-photo { display: block; max-width: 520px; margin: 0 0 20px; border-radius: 4px; overflow: hidden; background: var(--line); }
+    .hotel-photo img { display: block; width: 100%; height: clamp(170px, 27vw, 275px); object-fit: cover; }
+    .hotel-body p { margin-bottom: 13px; font-size: 15px; color: var(--muted); }
+    .hotel-body .hotel-address { color: var(--fg); }
+    .hotel-actions { display: flex; flex-wrap: wrap; gap: 9px; margin-top: 18px; }
+    .hotel-actions a { border: 1px solid var(--line); padding: 8px 12px; border-radius: 999px; font-size: 13px; }
+    .hotel-actions a:hover { border-color: var(--accent); color: var(--fg); }
+    .travel-note { color: var(--muted); font-size: 14px !important; }
     .detail {
       display: grid;
       grid-template-columns: 140px 1fr;
@@ -187,7 +190,6 @@
       .hero-photo img { object-position: 61% 48%; }
       .section-grid { grid-template-columns: 1fr; gap: 36px; }
       .detail { grid-template-columns: 1fr; gap: 6px; }
-      .hotel-list { grid-template-columns: 1fr; }
       .event { grid-template-columns: 80px 1fr; gap: 18px; }
       section { padding: 72px 0; }
     }
@@ -210,11 +212,11 @@
   <header id="top">
       <div class="hero-copy">
         <div class="eyebrow">We’re getting married</div>
-        <h1>Andy<br>&amp; Nicoletta</h1>
+        <h1>Nicoletta<br>&amp; Andy</h1>
         <div class="hero-meta">August 21, 2027 · Lake George</div>
         <div class="hero-sub">The Morrison Residence</div>
       </div>
-      <div class="hero-photo"><img src="portrait.jpg" alt="Andy and Nicoletta together by the water" fetchpriority="high"></div>
+      <div class="hero-photo"><img src="portrait.jpg" alt="Nicoletta and Andy together by the water" fetchpriority="high"></div>
   </header>
 
   <main>
@@ -228,7 +230,7 @@
           <div class="detail"><div class="label">Date</div><div class="value">Saturday, August 21, 2027</div></div>
           <div class="detail"><div class="label">Location</div><div class="value">Lake George, New York</div></div>
           <div class="detail"><div class="label">Venue</div><div class="value">The Morrison Residence</div></div>
-          <div class="detail"><div class="label">Dress</div><div class="value">Summer elegant. Leave the heels at home.</div></div>
+          <div class="detail"><div class="label">Dress</div><div class="value">Summer elegant. Recommended shoes: dress shoes, flats, wedges, or chunky heels.</div></div>
         </div>
       </div>
     </section>
@@ -250,20 +252,159 @@
           <h2>Where to stay</h2>
         </div>
         <div class="content">
-          <p>Here are a few places to stay in Lake George. Book whichever works best for you.</p>
+          <p>Here are a few places to stay in Lake George. Select a hotel for details and directions to The Morrison Residence.</p>
+          <p class="travel-note">Distances are approximate road routes to 33 Kings Road. Drive times are light-traffic estimates; check the walking route before counting on it.</p>
           <div class="hotel-list">
-            <a class="hotel" href="https://www.fortwilliamhenry.com/" target="_blank" rel="noopener noreferrer">Fort William Henry Hotel</a>
-            <a class="hotel" href="https://www.georgianresort.com/" target="_blank" rel="noopener noreferrer">The Georgian Lakeside Resort</a>
-            <a class="hotel" href="https://www.marinevillage.com/" target="_blank" rel="noopener noreferrer">Marine Village</a>
-            <a class="hotel" href="https://www.marriott.com/en-us/hotels/gflcy-courtyard-lake-george/overview/" target="_blank" rel="noopener noreferrer">Courtyard by Marriott</a>
-            <a class="hotel" href="https://www.ihg.com/holidayinnresorts/hotels/us/en/lake-george/lgrny/hoteldetail" target="_blank" rel="noopener noreferrer">Holiday Inn Resort</a>
-            <a class="hotel" href="https://www.wyndhamhotels.com/wingate/lake-george-new-york/wingate-lake-george/overview" target="_blank" rel="noopener noreferrer">Wingate by Wyndham</a>
-            <a class="hotel" href="https://www.google.com/maps/search/?api=1&amp;query=Kathy%27s+Resort%2C+2354+State+Route+9N%2C+Lake+George%2C+NY+12845" target="_blank" rel="noopener noreferrer">Kathy’s Resort</a>
-            <a class="hotel" href="https://www.choicehotels.com/new-york/lake-george/comfort-inn-hotels/ny843" target="_blank" rel="noopener noreferrer">Comfort Inn &amp; Suites Lake George</a>
-            <a class="hotel" href="https://www.scottyslakesideresort.com/" target="_blank" rel="noopener noreferrer">Scotty’s Lakeside Resort</a>
-            <a class="hotel" href="https://www.nordicks.com/" target="_blank" rel="noopener noreferrer">Nordick’s Inn</a>
+            <details class="hotel-card">
+              <summary><span><span class="hotel-name">Fort William Henry Hotel</span><span class="hotel-place">48 Canada Street · 2.0 mi to the venue</span></span></summary>
+              <div class="hotel-body">
+                <a class="hotel-photo" href="https://www.fortwilliamhenry.com/resort-overview/" target="_blank" rel="noopener noreferrer" aria-label="See photos of Fort William Henry Hotel"><img src="https://www.fortwilliamhenry.com/wp-content/uploads/2026/02/Hero-Image-1.jpg" alt="Fort William Henry Hotel property photo" loading="lazy" decoding="async"></a>
+                <p>Historic resort at the southern end of Lake George, with lake views, dining and indoor and outdoor pools.</p>
+                <p class="hotel-address">48 Canada Street, Lake George, NY 12845</p>
+                <p><strong>about 5 min by car</strong> in light traffic · Driving recommended.</p>
+                <div class="hotel-actions">
+                  <a href="https://www.google.com/maps/dir/?api=1&amp;origin=48%20Canada%20Street%2C%20Lake%20George%2C%20NY%2012845&amp;destination=33%20Kings%20Road%2C%20Lake%20George%2C%20NY%2012845&amp;travelmode=driving" target="_blank" rel="noopener noreferrer">Drive to venue ↗</a>
+                  <a href="https://www.google.com/maps/dir/?api=1&amp;origin=48%20Canada%20Street%2C%20Lake%20George%2C%20NY%2012845&amp;destination=33%20Kings%20Road%2C%20Lake%20George%2C%20NY%2012845&amp;travelmode=walking" target="_blank" rel="noopener noreferrer">Check walking route ↗</a>
+                  <a href="https://www.fortwilliamhenry.com/resort-overview/" target="_blank" rel="noopener noreferrer">Photos ↗</a>
+                  <a href="https://www.fortwilliamhenry.com/" target="_blank" rel="noopener noreferrer">Hotel website ↗</a>
+                </div>
+              </div>
+            </details>
+            <details class="hotel-card">
+              <summary><span><span class="hotel-name">The Georgian Lakeside Resort</span><span class="hotel-place">384 Canada Street · 2.7 mi to the venue</span></span></summary>
+              <div class="hotel-body">
+                <a class="hotel-photo" href="https://www.georgianresort.com/resort/photos-videos/" target="_blank" rel="noopener noreferrer" aria-label="See photos of The Georgian Lakeside Resort"><img src="https://www.georgianresort.com/wp-content/uploads/2022/02/hero-img-2.jpg" alt="The Georgian Lakeside Resort property photo" loading="lazy" decoding="async"></a>
+                <p>Village lakefront resort with a beach, heated pool and lakeside dining.</p>
+                <p class="hotel-address">384 Canada Street, Lake George, NY 12845</p>
+                <p><strong>about 6 min by car</strong> in light traffic · Driving recommended.</p>
+                <div class="hotel-actions">
+                  <a href="https://www.google.com/maps/dir/?api=1&amp;origin=384%20Canada%20Street%2C%20Lake%20George%2C%20NY%2012845&amp;destination=33%20Kings%20Road%2C%20Lake%20George%2C%20NY%2012845&amp;travelmode=driving" target="_blank" rel="noopener noreferrer">Drive to venue ↗</a>
+                  <a href="https://www.google.com/maps/dir/?api=1&amp;origin=384%20Canada%20Street%2C%20Lake%20George%2C%20NY%2012845&amp;destination=33%20Kings%20Road%2C%20Lake%20George%2C%20NY%2012845&amp;travelmode=walking" target="_blank" rel="noopener noreferrer">Check walking route ↗</a>
+                  <a href="https://www.georgianresort.com/resort/photos-videos/" target="_blank" rel="noopener noreferrer">Photos ↗</a>
+                  <a href="https://www.georgianresort.com/" target="_blank" rel="noopener noreferrer">Hotel website ↗</a>
+                </div>
+              </div>
+            </details>
+            <details class="hotel-card">
+              <summary><span><span class="hotel-name">Marine Village</span><span class="hotel-place">370 Canada Street · 2.5 mi to the venue</span></span></summary>
+              <div class="hotel-body">
+                <a class="hotel-photo" href="https://www.marinevillage.com/about-marine-village/photos/" target="_blank" rel="noopener noreferrer" aria-label="See photos of Marine Village"><img src="https://www.marinevillage.com/wp-content/uploads/2022/10/hero-image.jpg" alt="Marine Village property photo" loading="lazy" decoding="async"></a>
+                <p>Lakefront rooms and a beach right in Lake George Village.</p>
+                <p class="hotel-address">370 Canada Street, Lake George, NY 12845</p>
+                <p><strong>about 5 min by car</strong> in light traffic · Driving recommended.</p>
+                <div class="hotel-actions">
+                  <a href="https://www.google.com/maps/dir/?api=1&amp;origin=370%20Canada%20Street%2C%20Lake%20George%2C%20NY%2012845&amp;destination=33%20Kings%20Road%2C%20Lake%20George%2C%20NY%2012845&amp;travelmode=driving" target="_blank" rel="noopener noreferrer">Drive to venue ↗</a>
+                  <a href="https://www.google.com/maps/dir/?api=1&amp;origin=370%20Canada%20Street%2C%20Lake%20George%2C%20NY%2012845&amp;destination=33%20Kings%20Road%2C%20Lake%20George%2C%20NY%2012845&amp;travelmode=walking" target="_blank" rel="noopener noreferrer">Check walking route ↗</a>
+                  <a href="https://www.marinevillage.com/about-marine-village/photos/" target="_blank" rel="noopener noreferrer">Photos ↗</a>
+                  <a href="https://www.marinevillage.com/" target="_blank" rel="noopener noreferrer">Hotel website ↗</a>
+                </div>
+              </div>
+            </details>
+            <details class="hotel-card">
+              <summary><span><span class="hotel-name">Courtyard by Marriott</span><span class="hotel-place">365 Canada Street · 2.5 mi to the venue</span></span></summary>
+              <div class="hotel-body">
+                <a class="hotel-photo" href="https://www.marriott.com/en-us/hotels/gflcy-courtyard-lake-george/photos/" target="_blank" rel="noopener noreferrer" aria-label="See photos of Courtyard by Marriott"><img src="https://cache.marriott.com/content/dam/marriott-renditions/GFLCY/gflcy-terrace-0066-hor-wide.jpg?output-quality=70&amp;interpolation=progressive-bilinear&amp;downsize=1336px:*" alt="Courtyard by Marriott property photo" loading="lazy" decoding="async"></a>
+                <p>Village hotel with an indoor pool and a short walk to the lakefront.</p>
+                <p class="hotel-address">365 Canada Street, Lake George, NY 12845</p>
+                <p><strong>about 6 min by car</strong> in light traffic · Driving recommended.</p>
+                <div class="hotel-actions">
+                  <a href="https://www.google.com/maps/dir/?api=1&amp;origin=365%20Canada%20Street%2C%20Lake%20George%2C%20NY%2012845&amp;destination=33%20Kings%20Road%2C%20Lake%20George%2C%20NY%2012845&amp;travelmode=driving" target="_blank" rel="noopener noreferrer">Drive to venue ↗</a>
+                  <a href="https://www.google.com/maps/dir/?api=1&amp;origin=365%20Canada%20Street%2C%20Lake%20George%2C%20NY%2012845&amp;destination=33%20Kings%20Road%2C%20Lake%20George%2C%20NY%2012845&amp;travelmode=walking" target="_blank" rel="noopener noreferrer">Check walking route ↗</a>
+                  <a href="https://www.marriott.com/en-us/hotels/gflcy-courtyard-lake-george/photos/" target="_blank" rel="noopener noreferrer">Photos ↗</a>
+                  <a href="https://www.marriott.com/en-us/hotels/gflcy-courtyard-lake-george/overview/" target="_blank" rel="noopener noreferrer">Hotel website ↗</a>
+                </div>
+              </div>
+            </details>
+            <details class="hotel-card">
+              <summary><span><span class="hotel-name">Holiday Inn Resort</span><span class="hotel-place">2223 Canada Street · 3.2 mi to the venue</span></span></summary>
+              <div class="hotel-body">
+                <a class="hotel-photo" href="https://www.ihg.com/holidayinnresorts/hotels/us/en/lake-george/lgrny/hoteldetail/gallery" target="_blank" rel="noopener noreferrer" aria-label="See photos of Holiday Inn Resort"><img src="https://digital.ihg.com/is/image/ihg/holiday-inn-resort-lake-george-10570366663-2x1" alt="Holiday Inn Resort property photo" loading="lazy" decoding="async"></a>
+                <p>Family-friendly resort with pools and on-site parking.</p>
+                <p class="hotel-address">2223 Canada Street, Lake George, NY 12845</p>
+                <p><strong>about 5 min by car</strong> in light traffic · Driving recommended.</p>
+                <div class="hotel-actions">
+                  <a href="https://www.google.com/maps/dir/?api=1&amp;origin=2223%20Canada%20Street%2C%20Lake%20George%2C%20NY%2012845&amp;destination=33%20Kings%20Road%2C%20Lake%20George%2C%20NY%2012845&amp;travelmode=driving" target="_blank" rel="noopener noreferrer">Drive to venue ↗</a>
+                  <a href="https://www.google.com/maps/dir/?api=1&amp;origin=2223%20Canada%20Street%2C%20Lake%20George%2C%20NY%2012845&amp;destination=33%20Kings%20Road%2C%20Lake%20George%2C%20NY%2012845&amp;travelmode=walking" target="_blank" rel="noopener noreferrer">Check walking route ↗</a>
+                  <a href="https://www.ihg.com/holidayinnresorts/hotels/us/en/lake-george/lgrny/hoteldetail/gallery" target="_blank" rel="noopener noreferrer">Photos ↗</a>
+                  <a href="https://www.ihg.com/holidayinnresorts/hotels/us/en/lake-george/lgrny/hoteldetail" target="_blank" rel="noopener noreferrer">Hotel website ↗</a>
+                </div>
+              </div>
+            </details>
+            <details class="hotel-card">
+              <summary><span><span class="hotel-name">Wingate by Wyndham</span><span class="hotel-place">2447 State Route 9N · 0.9 mi to the venue</span></span></summary>
+              <div class="hotel-body">
+                <p>Close to the venue, with breakfast, parking and an outdoor pool.</p>
+                <p class="hotel-address">2447 State Route 9N, Lake George, NY 12845</p>
+                <p><strong>about 2 min by car</strong> in light traffic · Nearby; check the walking route along Route 9N.</p>
+                <div class="hotel-actions">
+                  <a href="https://www.google.com/maps/dir/?api=1&amp;origin=2447%20State%20Route%209N%2C%20Lake%20George%2C%20NY%2012845&amp;destination=33%20Kings%20Road%2C%20Lake%20George%2C%20NY%2012845&amp;travelmode=driving" target="_blank" rel="noopener noreferrer">Drive to venue ↗</a>
+                  <a href="https://www.google.com/maps/dir/?api=1&amp;origin=2447%20State%20Route%209N%2C%20Lake%20George%2C%20NY%2012845&amp;destination=33%20Kings%20Road%2C%20Lake%20George%2C%20NY%2012845&amp;travelmode=walking" target="_blank" rel="noopener noreferrer">Check walking route ↗</a>
+                  <a href="https://www.wyndhamhotels.com/wingate/lake-george-new-york/wingate-lake-george/overview" target="_blank" rel="noopener noreferrer">Photos ↗</a>
+                  <a href="https://www.wyndhamhotels.com/wingate/lake-george-new-york/wingate-lake-george/overview" target="_blank" rel="noopener noreferrer">Hotel website ↗</a>
+                </div>
+              </div>
+            </details>
+            <details class="hotel-card">
+              <summary><span><span class="hotel-name">Kathy’s Resort</span><span class="hotel-place">2354 State Route 9N · 0.4 mi to the venue</span></span></summary>
+              <div class="hotel-body">
+                <p>Cottages and motel accommodations near the venue. Call 518-668-2151 for details.</p>
+                <p class="hotel-address">2354 State Route 9N, Lake George, NY 12845</p>
+                <p><strong>about 1 min by car</strong> in light traffic · Closest option; check the walking route and roadside conditions.</p>
+                <div class="hotel-actions">
+                  <a href="https://www.google.com/maps/dir/?api=1&amp;origin=2354%20State%20Route%209N%2C%20Lake%20George%2C%20NY%2012845&amp;destination=33%20Kings%20Road%2C%20Lake%20George%2C%20NY%2012845&amp;travelmode=driving" target="_blank" rel="noopener noreferrer">Drive to venue ↗</a>
+                  <a href="https://www.google.com/maps/dir/?api=1&amp;origin=2354%20State%20Route%209N%2C%20Lake%20George%2C%20NY%2012845&amp;destination=33%20Kings%20Road%2C%20Lake%20George%2C%20NY%2012845&amp;travelmode=walking" target="_blank" rel="noopener noreferrer">Check walking route ↗</a>
+                  <a href="https://www.lakegeorge.com/business/kathys-motel-and-cottages-597/" target="_blank" rel="noopener noreferrer">Photos ↗</a>
+                  <a href="https://www.lakegeorge.com/business/kathys-motel-and-cottages-597/" target="_blank" rel="noopener noreferrer">Hotel listing ↗</a>
+                  <a href="tel:+15186682151">Call 518-668-2151</a>
+                </div>
+              </div>
+            </details>
+            <details class="hotel-card">
+              <summary><span><span class="hotel-name">Comfort Inn &amp; Suites Lake George</span><span class="hotel-place">4054 State Route 9L · 1.3 mi to the venue</span></span></summary>
+              <div class="hotel-body">
+                <a class="hotel-photo" href="https://www.choicehotels.com/new-york/lake-george/comfort-inn-hotels/ny843" target="_blank" rel="noopener noreferrer" aria-label="See photos of Comfort Inn &amp; Suites Lake George"><img src="https://www.choicehotels.com/hoteldam/ny/ny843/images/320/NY843exterior1_1.jpg?webp=true" alt="Comfort Inn &amp; Suites Lake George property photo" loading="lazy" decoding="async"></a>
+                <p>Practical hotel option with breakfast and an outdoor pool.</p>
+                <p class="hotel-address">4054 State Route 9L, Lake George, NY 12845</p>
+                <p><strong>about 3 min by car</strong> in light traffic · Short drive; check the walking route.</p>
+                <div class="hotel-actions">
+                  <a href="https://www.google.com/maps/dir/?api=1&amp;origin=4054%20State%20Route%209L%2C%20Lake%20George%2C%20NY%2012845&amp;destination=33%20Kings%20Road%2C%20Lake%20George%2C%20NY%2012845&amp;travelmode=driving" target="_blank" rel="noopener noreferrer">Drive to venue ↗</a>
+                  <a href="https://www.google.com/maps/dir/?api=1&amp;origin=4054%20State%20Route%209L%2C%20Lake%20George%2C%20NY%2012845&amp;destination=33%20Kings%20Road%2C%20Lake%20George%2C%20NY%2012845&amp;travelmode=walking" target="_blank" rel="noopener noreferrer">Check walking route ↗</a>
+                  <a href="https://www.choicehotels.com/new-york/lake-george/comfort-inn-hotels/ny843" target="_blank" rel="noopener noreferrer">Photos ↗</a>
+                  <a href="https://www.choicehotels.com/new-york/lake-george/comfort-inn-hotels/ny843" target="_blank" rel="noopener noreferrer">Hotel website ↗</a>
+                </div>
+              </div>
+            </details>
+            <details class="hotel-card">
+              <summary><span><span class="hotel-name">Scotty’s Lakeside Resort</span><span class="hotel-place">2896 Lake Shore Drive · 2.9 mi to the venue</span></span></summary>
+              <div class="hotel-body">
+                <a class="hotel-photo" href="https://www.scottyslakesideresort.com/the-resort/photo-gallery/" target="_blank" rel="noopener noreferrer" aria-label="See photos of Scotty’s Lakeside Resort"><img src="https://www.scottyslakesideresort.com/wp-content/uploads/2025/02/Adobe-Express-file-1275x500.jpg" alt="Scotty’s Lakeside Resort property photo" loading="lazy" decoding="async"></a>
+                <p>Lakefront resort with a beach, pool and on-site café and beach bar.</p>
+                <p class="hotel-address">2896 Lake Shore Drive, Lake George, NY 12845</p>
+                <p><strong>about 7 min by car</strong> in light traffic · Driving recommended.</p>
+                <div class="hotel-actions">
+                  <a href="https://www.google.com/maps/dir/?api=1&amp;origin=2896%20Lake%20Shore%20Drive%2C%20Lake%20George%2C%20NY%2012845&amp;destination=33%20Kings%20Road%2C%20Lake%20George%2C%20NY%2012845&amp;travelmode=driving" target="_blank" rel="noopener noreferrer">Drive to venue ↗</a>
+                  <a href="https://www.google.com/maps/dir/?api=1&amp;origin=2896%20Lake%20Shore%20Drive%2C%20Lake%20George%2C%20NY%2012845&amp;destination=33%20Kings%20Road%2C%20Lake%20George%2C%20NY%2012845&amp;travelmode=walking" target="_blank" rel="noopener noreferrer">Check walking route ↗</a>
+                  <a href="https://www.scottyslakesideresort.com/the-resort/photo-gallery/" target="_blank" rel="noopener noreferrer">Photos ↗</a>
+                  <a href="https://www.scottyslakesideresort.com/" target="_blank" rel="noopener noreferrer">Hotel website ↗</a>
+                </div>
+              </div>
+            </details>
+            <details class="hotel-card">
+              <summary><span><span class="hotel-name">Nordick’s Inn</span><span class="hotel-place">2895 Lake Shore Drive · 2.8 mi to the venue</span></span></summary>
+              <div class="hotel-body">
+                <a class="hotel-photo" href="https://www.nordicks.com/accommodations/" target="_blank" rel="noopener noreferrer" aria-label="See photos of Nordick’s Inn"><img src="https://www.nordicks.com/wp-content/uploads/2021/12/pool-from-poolside.3000x2000-scaled.jpg" alt="Nordick’s Inn property photo" loading="lazy" decoding="async"></a>
+                <p>Village inn with lake views and an outdoor heated pool.</p>
+                <p class="hotel-address">2895 Lake Shore Drive, Lake George, NY 12845</p>
+                <p><strong>about 6 min by car</strong> in light traffic · Driving recommended.</p>
+                <div class="hotel-actions">
+                  <a href="https://www.google.com/maps/dir/?api=1&amp;origin=2895%20Lake%20Shore%20Drive%2C%20Lake%20George%2C%20NY%2012845&amp;destination=33%20Kings%20Road%2C%20Lake%20George%2C%20NY%2012845&amp;travelmode=driving" target="_blank" rel="noopener noreferrer">Drive to venue ↗</a>
+                  <a href="https://www.google.com/maps/dir/?api=1&amp;origin=2895%20Lake%20Shore%20Drive%2C%20Lake%20George%2C%20NY%2012845&amp;destination=33%20Kings%20Road%2C%20Lake%20George%2C%20NY%2012845&amp;travelmode=walking" target="_blank" rel="noopener noreferrer">Check walking route ↗</a>
+                  <a href="https://www.nordicks.com/accommodations/" target="_blank" rel="noopener noreferrer">Photos ↗</a>
+                  <a href="https://www.nordicks.com/" target="_blank" rel="noopener noreferrer">Hotel website ↗</a>
+                </div>
+              </div>
+            </details>
           </div>
-          <p class="hotel-note">Kathy’s Resort · 2354 State Route 9N · <a href="tel:+15186682151">518-668-2151</a></p>
         </div>
       </div>
     </section>
@@ -285,7 +426,7 @@
           </details>
           <details>
             <summary>What should I wear?</summary>
-            <p>Summer elegant. Leave the heels at home.</p>
+            <p>Summer elegant. Recommended shoes: dress shoes, flats, wedges, or chunky heels.</p>
           </details>
           <details>
             <summary>Anything else?</summary>
@@ -309,7 +450,7 @@
   </main>
 
   <footer class="wrap">
-    <span>Andy &amp; Nicoletta · August 21, 2027</span>
+    <span>Nicoletta &amp; Andy · August 21, 2027</span>
     <span>Lake George, NY</span>
   </footer>
 </body>
