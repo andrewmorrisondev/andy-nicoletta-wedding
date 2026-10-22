@@ -1,4 +1,4 @@
-# Andy & Nicoletta wedding site
+# Nicoletta & Andy wedding site
 
 A static wedding website with no dependencies. Keep `portrait.jpg` alongside
 `index.html` when publishing.
