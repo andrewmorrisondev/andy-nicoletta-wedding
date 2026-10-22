@@ -100,6 +100,21 @@
     .content { max-width: 700px; }
     .content p { margin: 0 0 22px; font-size: 17px; }
     .detail-list { display: grid; gap: 22px; }
+    .hotel-list { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 0 24px; margin-top: 30px; }
+    .hotel {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 18px;
+      min-height: 72px;
+      border-top: 1px solid var(--line);
+      font-family: Georgia, "Times New Roman", serif;
+      font-size: 19px;
+      line-height: 1.25;
+    }
+    .hotel:hover { color: var(--accent); }
+    .hotel::after { content: "↗"; flex: none; font-family: ui-sans-serif, sans-serif; font-size: 17px; color: var(--accent); }
+    .hotel-note { margin-top: 14px; color: var(--muted); font-size: 14px; }
     .detail {
       display: grid;
       grid-template-columns: 140px 1fr;
@@ -172,6 +187,7 @@
       .hero-photo img { object-position: 61% 48%; }
       .section-grid { grid-template-columns: 1fr; gap: 36px; }
       .detail { grid-template-columns: 1fr; gap: 6px; }
+      .hotel-list { grid-template-columns: 1fr; }
       .event { grid-template-columns: 80px 1fr; gap: 18px; }
       section { padding: 72px 0; }
     }
@@ -184,7 +200,7 @@
       <div class="nav-links">
         <a href="#details">Details</a>
         <a href="#schedule">Schedule</a>
-        <a href="#travel">Travel</a>
+        <a href="#travel">Stay</a>
         <a href="#faq">FAQ</a>
         <a href="#rsvp">RSVP</a>
       </div>
@@ -231,10 +247,23 @@
       <div class="wrap section-grid">
         <div>
           <div class="kicker">03</div>
-          <h2>Travel</h2>
+          <h2>Where to stay</h2>
         </div>
         <div class="content">
-          <p>We’ll share lodging and travel details for Lake George soon.</p>
+          <p>Here are a few places to stay in Lake George. Book whichever works best for you.</p>
+          <div class="hotel-list">
+            <a class="hotel" href="https://www.fortwilliamhenry.com/" target="_blank" rel="noopener noreferrer">Fort William Henry Hotel</a>
+            <a class="hotel" href="https://www.georgianresort.com/" target="_blank" rel="noopener noreferrer">The Georgian Lakeside Resort</a>
+            <a class="hotel" href="https://www.marinevillage.com/" target="_blank" rel="noopener noreferrer">Marine Village</a>
+            <a class="hotel" href="https://www.marriott.com/en-us/hotels/gflcy-courtyard-lake-george/overview/" target="_blank" rel="noopener noreferrer">Courtyard by Marriott</a>
+            <a class="hotel" href="https://www.ihg.com/holidayinnresorts/hotels/us/en/lake-george/lgrny/hoteldetail" target="_blank" rel="noopener noreferrer">Holiday Inn Resort</a>
+            <a class="hotel" href="https://www.wyndhamhotels.com/wingate/lake-george-new-york/wingate-lake-george/overview" target="_blank" rel="noopener noreferrer">Wingate by Wyndham</a>
+            <a class="hotel" href="https://www.google.com/maps/search/?api=1&amp;query=Kathy%27s+Resort%2C+2354+State+Route+9N%2C+Lake+George%2C+NY+12845" target="_blank" rel="noopener noreferrer">Kathy’s Resort</a>
+            <a class="hotel" href="https://www.choicehotels.com/new-york/lake-george/comfort-inn-hotels/ny843" target="_blank" rel="noopener noreferrer">Comfort Inn &amp; Suites Lake George</a>
+            <a class="hotel" href="https://www.scottyslakesideresort.com/" target="_blank" rel="noopener noreferrer">Scotty’s Lakeside Resort</a>
+            <a class="hotel" href="https://www.nordicks.com/" target="_blank" rel="noopener noreferrer">Nordick’s Inn</a>
+          </div>
+          <p class="hotel-note">Kathy’s Resort · 2354 State Route 9N · <a href="tel:+15186682151">518-668-2151</a></p>
         </div>
       </div>
     </section>
