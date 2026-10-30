@@ -181,6 +181,37 @@
     }
     .button-row { display: flex; gap: 10px; flex-wrap: wrap; }
 
+
+    .guestbook-intro { color: var(--muted); margin-bottom: 30px; }
+    .guest-form { border: 1px solid var(--line); background: var(--bg); padding: 24px; margin-bottom: 32px; }
+    .guest-form-grid { display: grid; grid-template-columns: minmax(0, 1fr) 2fr; gap: 18px; }
+    .guest-field label { display: block; margin-bottom: 7px; color: var(--muted); font-size: 11px; text-transform: uppercase; letter-spacing: .09em; }
+    .guest-field input, .guest-field textarea { width: 100%; border: 1px solid var(--line); border-radius: 0; background: var(--paper); color: var(--fg); padding: 12px 13px; font: inherit; outline: none; transition: border-color .2s ease; }
+    .guest-field textarea { min-height: 96px; resize: vertical; }
+    .guest-field input:focus, .guest-field textarea:focus { border-color: var(--accent); }
+    .guest-field input::placeholder, .guest-field textarea::placeholder { color: #929b8c; }
+    .guest-form-bottom { display: flex; align-items: center; justify-content: space-between; gap: 18px; margin-top: 14px; }
+    .guest-count, .guest-kind { color: var(--muted); font-size: 12px; }
+    .guest-submit { border: 0; border-radius: 999px; background: var(--fg); color: var(--paper); min-height: 44px; padding: 0 20px; cursor: pointer; font-size: 13px; transition: transform .15s ease, opacity .15s ease; }
+    .guest-submit:hover:not(:disabled) { transform: translateY(-1px); opacity: .9; }
+    .guest-submit:disabled { cursor: not-allowed; opacity: .48; }
+    .guest-status { min-height: 20px; margin: 12px 0 0; color: var(--muted); font-size: 13px; }
+    .guest-status.is-error { color: #8a4a43; }
+    .guest-honeypot { position: absolute !important; left: -10000px !important; width: 1px !important; height: 1px !important; overflow: hidden !important; }
+    .guestboard-head { display: flex; align-items: center; justify-content: space-between; gap: 20px; padding-bottom: 13px; border-bottom: 1px solid var(--line); }
+    .guestboard-head strong { font-family: Georgia, "Times New Roman", serif; font-size: 20px; font-weight: 400; }
+    .guestboard-head span { color: var(--muted); font-size: 12px; }
+    .guest-notes { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 14px; padding-top: 18px; }
+    .guest-note { position: relative; min-height: 150px; padding: 25px 20px 17px; background: #eee8d8; box-shadow: 0 5px 14px rgba(39, 50, 37, .08); transform: rotate(-.35deg); display: flex; flex-direction: column; justify-content: space-between; overflow-wrap: anywhere; }
+    .guest-note:nth-child(4n + 2) { background: #e5eadf; transform: rotate(.45deg); }
+    .guest-note:nth-child(4n + 3) { background: #efe2db; transform: rotate(.25deg); }
+    .guest-note:nth-child(4n) { background: #f1eddf; transform: rotate(-.5deg); }
+    .guest-pin { position: absolute; top: 10px; left: 50%; width: 7px; height: 7px; border-radius: 50%; background: var(--accent); box-shadow: 0 1px 3px rgba(39, 50, 37, .35); }
+    .guest-note-message { margin: 7px 0 23px; font: italic 18px/1.45 Georgia, "Times New Roman", serif; }
+    .guest-note-meta { display: flex; justify-content: space-between; align-items: flex-end; gap: 10px; padding-top: 10px; border-top: 1px solid rgba(39, 50, 37, .12); color: var(--muted); font-size: 11px; }
+    .guest-note-name { color: var(--fg); font-weight: 600; }
+    .guest-empty { grid-column: 1 / -1; color: var(--muted); font-style: italic; }
+
     footer {
       border-top: 1px solid var(--line);
       padding: 34px 0 48px;
@@ -199,6 +230,10 @@
       .hero-photo { min-height: 0; height: min(75vw, 510px); }
       .hero-photo img { object-position: 61% 48%; }
       .section-grid { grid-template-columns: 1fr; gap: 36px; }
+      .guest-form-grid { grid-template-columns: 1fr; }
+      .guest-form-bottom { align-items: flex-start; flex-direction: column; }
+      .guest-submit { width: 100%; }
+      .guest-notes { grid-template-columns: 1fr; }
       .detail { grid-template-columns: 1fr; gap: 6px; }
       .event { grid-template-columns: 80px 1fr; gap: 18px; }
       section { padding: 72px 0; }
@@ -219,6 +254,7 @@
         <a href="#schedule">Schedule</a>
         <a href="#travel">Stay</a>
         <a href="#faq">FAQ</a>
+        <a href="#guestbook">Guestbook</a>
         <a href="#rsvp">RSVP</a>
       </div>
     </div>
@@ -430,10 +466,49 @@
       </div>
     </section>
 
-    <section id="rsvp">
+
+    <section id="guestbook">
       <div class="wrap section-grid">
         <div>
           <div class="kicker">05</div>
+          <h2>Leave your mark</h2>
+        </div>
+        <div class="content">
+          <p class="guestbook-intro">Write us a note, share a memory, or simply say you were here. Your message will join the board for everyone to see.</p>
+          <form class="guest-form" id="guest-form">
+            <div class="guest-form-grid">
+              <div class="guest-field">
+                <label for="guest-name">Your name <span aria-hidden="true">(optional)</span></label>
+                <input id="guest-name" name="name" maxlength="40" autocomplete="name" placeholder="Aunt Maria">
+              </div>
+              <div class="guest-field">
+                <label for="guest-message">Your message</label>
+                <textarea id="guest-message" name="message" maxlength="120" required placeholder="Andy was here…"></textarea>
+              </div>
+            </div>
+            <div class="guest-honeypot" aria-hidden="true">
+              <label for="guest-website">Website</label>
+              <input id="guest-website" name="website" tabindex="-1" autocomplete="off">
+            </div>
+            <div class="guest-form-bottom">
+              <div><span class="guest-count" id="guest-count">0 / 120</span><span class="guest-kind"> · Keep it kind ♡</span></div>
+              <button class="guest-submit" id="guest-submit" type="submit" disabled>Pin it to the board</button>
+            </div>
+            <p class="guest-status" id="guest-status" role="status" aria-live="polite"></p>
+          </form>
+          <div class="guestboard-head">
+            <strong>The guest board</strong>
+            <span id="guest-total">Loading notes…</span>
+          </div>
+          <div class="guest-notes" id="guest-notes" aria-live="polite" aria-busy="true"></div>
+        </div>
+      </div>
+    </section>
+
+    <section id="rsvp">
+      <div class="wrap section-grid">
+        <div>
+          <div class="kicker">06</div>
           <h2>RSVP</h2>
         </div>
         <div class="content">
@@ -442,6 +517,124 @@
       </div>
     </section>
   </main>
+
+
+  <script>
+    (() => {
+      const endpoint = "https://slbjxzyozqxflkqjcvge.supabase.co/functions/v1/guestbook";
+      const form = document.getElementById("guest-form");
+      const nameInput = document.getElementById("guest-name");
+      const messageInput = document.getElementById("guest-message");
+      const websiteInput = document.getElementById("guest-website");
+      const submit = document.getElementById("guest-submit");
+      const status = document.getElementById("guest-status");
+      const count = document.getElementById("guest-count");
+      const total = document.getElementById("guest-total");
+      const notes = document.getElementById("guest-notes");
+      const loadedAt = Date.now();
+
+      function timeAgo(dateString) {
+        const elapsed = Math.max(0, Date.now() - new Date(dateString).getTime());
+        const minutes = Math.floor(elapsed / 60000);
+        if (minutes < 1) return "Just now";
+        if (minutes < 60) return minutes + "m ago";
+        const hours = Math.floor(minutes / 60);
+        if (hours < 24) return hours + "h ago";
+        const days = Math.floor(hours / 24);
+        if (days < 7) return days + "d ago";
+        return new Date(dateString).toLocaleDateString(undefined, { month: "short", day: "numeric" });
+      }
+
+      function render(items) {
+        notes.replaceChildren();
+        notes.setAttribute("aria-busy", "false");
+        total.textContent = items.length + (items.length === 1 ? " note" : " notes");
+        if (!items.length) {
+          const empty = document.createElement("p");
+          empty.className = "guest-empty";
+          empty.textContent = "Be the first to leave a note.";
+          notes.append(empty);
+          return;
+        }
+        items.forEach((item) => {
+          const card = document.createElement("article");
+          card.className = "guest-note";
+          const pin = document.createElement("span");
+          pin.className = "guest-pin";
+          pin.setAttribute("aria-hidden", "true");
+          const message = document.createElement("p");
+          message.className = "guest-note-message";
+          message.textContent = item.message;
+          const meta = document.createElement("div");
+          meta.className = "guest-note-meta";
+          const author = document.createElement("span");
+          author.className = "guest-note-name";
+          author.textContent = item.name;
+          const time = document.createElement("time");
+          time.dateTime = item.createdAt;
+          time.textContent = timeAgo(item.createdAt);
+          meta.append(author, time);
+          card.append(pin, message, meta);
+          notes.append(card);
+        });
+      }
+
+      async function loadNotes() {
+        try {
+          const response = await fetch(endpoint, { cache: "no-store" });
+          if (!response.ok) throw new Error();
+          const data = await response.json();
+          render(data.messages || []);
+        } catch {
+          notes.setAttribute("aria-busy", "false");
+          total.textContent = "";
+          status.className = "guest-status is-error";
+          status.textContent = "The guest board is taking a moment. Please try again shortly.";
+        }
+      }
+
+      messageInput.addEventListener("input", () => {
+        count.textContent = messageInput.value.length + " / 120";
+        submit.disabled = messageInput.value.trim().length < 2;
+      });
+
+      form.addEventListener("submit", async (event) => {
+        event.preventDefault();
+        const message = messageInput.value.trim();
+        if (message.length < 2) return;
+        submit.disabled = true;
+        submit.textContent = "Adding your note…";
+        status.textContent = "";
+        status.className = "guest-status";
+        try {
+          const response = await fetch(endpoint, {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify({
+              name: nameInput.value,
+              message,
+              website: websiteInput.value,
+              loadedAt,
+            }),
+          });
+          const data = await response.json();
+          if (!response.ok) throw new Error(data.error || "We couldn't add that note.");
+          messageInput.value = "";
+          count.textContent = "0 / 120";
+          status.textContent = "Your note is on the board.";
+          await loadNotes();
+        } catch (error) {
+          status.className = "guest-status is-error";
+          status.textContent = error.message || "We couldn't add that note. Please try again.";
+        } finally {
+          submit.textContent = "Pin it to the board";
+          submit.disabled = messageInput.value.trim().length < 2;
+        }
+      });
+
+      loadNotes();
+    })();
+  </script>
 
   <footer class="wrap">
     <span>Nicoletta &amp; Andy · August 21, 2027</span>
